@@ -1,7 +1,8 @@
 // root reducer codes
 import { combineReducers } from 'redux';
-import auth from './authReducer'
+import auth from './authReducer';
+import question from './questionReducer';
 
-const rootReducer = combineReducers({auth});
+const rootReducer = combineReducers({auth, question});
 
 export default rootReducer;

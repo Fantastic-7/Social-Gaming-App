@@ -6,6 +6,7 @@ import './assets/scss/style.scss'
 import { Provider } from 'react-redux'
 import store from './redux/store'
 
+
 function App() {
   return (
     <Provider store={store}>
@@ -23,6 +24,7 @@ function App() {
       </Switch>
     </Router>
     </Provider>
+
   );
 }
 

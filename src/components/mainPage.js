@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Header from './header'
+import Question from './Question';
 import Sidebar from './Sidebar'
 
 class MainPage extends Component {
@@ -8,6 +9,7 @@ class MainPage extends Component {
             <div className="wrapper">
             <Header />
             <Sidebar />
+            <Question />
             </div>
         )
     }

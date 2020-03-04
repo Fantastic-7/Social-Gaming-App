@@ -1,7 +1,11 @@
 import { JOIN, LEAVE, VIEW_CONNECTED_USERS } from '../../constants/actionTypes';
+import blackProfileLogo from '../../assets/images/blackProfileLogo.png';
 
 const initialState = {
-	users: [],
+	users: [
+		{ id: 1, name: 'Elvis Rugamba', profileImg: blackProfileLogo },
+		{ id: 2, name: 'Emmy Karangwa', profileImg: blackProfileLogo },
+	],
 };
 
 const usersReducer = (state = initialState, { type, payload }) => {

@@ -143,4 +143,24 @@
 
 
 
+position: absolute;
+left: 1230px;
+top: 12px;
+font-family: $font-family;
+font-style: normal;
+font-weight: bold;
+font-size: 17px;
+line-height: 34px;
+color: $whiteColor;
+background-color: transparent;
+border: 0;
+&:hover {outline: 0; border: 0;}
+}
+.sidebar {
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    background: #f3f3f3;
+    left: 900px;
+    top: 60px;
 }

@@ -1,25 +1,31 @@
-import { SIGNOUT, SUCCESS_LOGIN } from '../../constants/actionTypes'
+import { SIGNOUT, SUCCESS_LOGIN, SET_CURRENT_USER } from '../../constants/actionTypes';
 
 const initialState = {
-isAuthenticated: true,
-user: {}
-}
+	isAuthenticated: false,
+	user: {},
+};
 
-export default (state = initialState, { type, data }) => {
-    switch (type) {
+export default (state = initialState, { type, payload }) => {
+	switch (type) {
+		case SIGNOUT:
+			return {
+				isAuthenticated: false,
+			};
 
-    case SIGNOUT:
-        return {
-            isAuthenticated: false,
-        }
+		case SUCCESS_LOGIN:
+			return {
+				isAuthenticated: true,
+				user: payload,
+			};
 
-    case SUCCESS_LOGIN:
-        return {
-            data,
-            isAuthenticated: true            
-        }
+		case SET_CURRENT_USER:
+			return {
+                ...state,
+				isAuthenticated: true,
+				user: payload,
+			};
 
-    default:
-        return state
-    }
-}
+		default:
+			return state;
+	}
+};

@@ -1,36 +1,42 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Avatar from './avatar';
-import { viewConnectedUsers } from '../redux/actions/usersActions';
+import { loadConnectedUsers } from '../redux/actions/usersActions';
+import '../assets/scss/sidebar.scss';
 
 class Sidebar extends Component {
-	componentDidMount() {
-		console.log(this.props.users);
-		const { connectedUsers } = this.props;
-		connectedUsers();
-	}
 
 	render() {
 		const { users } = this.props;
 		return (
 			<div className="sidebar">
-				<h1>Side bar</h1>
-				{users.map(({ id, name, profileImg }) => (
-					<div key={id}>
-						<Avatar src={profileImg} />
-						<p>{name}</p>
-					</div>
-				))}
+				<div className="online__users">
+					<p>
+						<strong> PLAYERS</strong> (online)
+					</p>
+				</div>
+				<ul>
+					{users.map(({ id, username, photo }) => (
+						<li key={id}>
+							<span className="Profile">
+								<img alt="profile" src={photo} />
+							</span>
+							{username}
+						</li>
+					))}
+				</ul>
 			</div>
 		);
 	}
 }
 
-const mapStateToProps = state => ({ users: state.usersReducer.users });
+const mapStateToProps = ({ usersReducer }) => ({ users: usersReducer.users });
 
 const mapDispatchToProps = dispatch => ({
+	// connectedUsers() {
+	// 	dispatch(viewConnectedUsers());
+	// },
 	connectedUsers() {
-		dispatch(viewConnectedUsers());
+		dispatch(loadConnectedUsers());
 	},
 });
 

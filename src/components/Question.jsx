@@ -15,7 +15,7 @@ class Question extends Component {
     this.state = {
       gameAnswer: null,
       currentQuestion: 0,
-      count: 10,
+      count: 25,
       options: [],
       done: false
     };

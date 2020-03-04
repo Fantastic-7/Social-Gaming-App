@@ -1,18 +1,38 @@
-import React, { Component } from 'react'
-import Header from './header'
+import React, { Component } from 'react';
+import jwt from 'jsonwebtoken';
+import { connect } from 'react-redux';
+import Header from './header';
+import Sidebar from './Sidebar';
 import StartGame from './StartGame';
-import Sidebar from './Sidebar'
+import { join, successJoin } from '../redux/actions/usersActions';
 
 class MainPage extends Component {
-    render() {
-        return (
-            <div className="wrapper">
-            <Header />
-            <Sidebar />
-            <StartGame />
-            </div>
-        )
-    }
+	componentDidMount() {
+		const token = localStorage.getItem('token');
+		const user = jwt.verify(token, 'ScreteGoesHere');
+		const { joinUser } = this.props;
+		joinUser(user);
+		// joinedSuccess();
+	}
+
+	render() {
+		return (
+			<div className="wrapper">
+				<Header />
+				<Sidebar />
+				<StartGame />
+			</div>
+		);
+	}
 }
 
-export default MainPage
+const mapDispatchToProps = dispatch => ({
+	joinUser(user) {
+		dispatch(join(user));
+	},
+	joinedSuccess() {
+		dispatch(successJoin());
+	},
+});
+
+export default connect(null, mapDispatchToProps)(MainPage);

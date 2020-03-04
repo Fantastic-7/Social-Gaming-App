@@ -28,9 +28,9 @@ Header.propTypes = {
     signout: PropTypes.func.isRequired
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({auth}) => {
     return {
-        isAuthenticated: state.auth.isAuthenticated
+        isAuthenticated: auth.isAuthenticated
     }
 }
 

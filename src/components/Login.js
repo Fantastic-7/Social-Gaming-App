@@ -9,7 +9,7 @@ import '../assets/scss/login.scss';
 
 class Login extends Component {
     handleLogin = () => {
-        window.location.href = 'http://localhost:5000/api/auth/facebook';
+        window.location.href = 'https://brainygame.herokuapp.com/api/auth/facebook';
     }
     componentDidMount() {
         const isLogged = localStorage.getItem('token')

@@ -23,7 +23,6 @@ const socketMiddleware = ({ dispatch }) => next => action => {
 	if (action.type === 'DONE') {
 		socket.emit('done', action.payload[0]);
 		socket.on('show_score', scores => {
-			dispatch(updateScoreBoard());
 			console.log(scores);
 			dispatch(showScore(scores));
 		});

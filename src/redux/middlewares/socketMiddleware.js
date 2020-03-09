@@ -23,6 +23,7 @@ const socketMiddleware = ({ dispatch }) => next => action => {
 		// dispatch({type: 'GAME_OVER'})
 		socket.emit('done', action.payload);
 		socket.on('show_score', scores => {
+			console.log(scores);
 			dispatch(showScore(scores));
 		});
 	}

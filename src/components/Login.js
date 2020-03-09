@@ -31,7 +31,7 @@ class Login extends Component {
 			<div className="mainBackground">
 				<h2 className=""> A BRAINY GAME</h2>
 				<p>
-					You get to answer 5 multiple choice questions. Each question takes a maximum of 10 seconds with in a
+					You get to answer 5 multiple choice questions. Each question takes a maximum of 25 seconds with in a
 					team of 5 players.
 					<br /> Do you want to win? How fast can you answer?
 				</p>

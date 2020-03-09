@@ -16,3 +16,4 @@ export const RESET_QUESTION = 'RESET_QUESTION';
 export const LOAD_CONNECTED_USERS = 'LOAD_CONNECTED_USERS';
 export const DONE = 'DONE';
 export const SHOW_SCORE = 'SHOW_SCORE';
+export const GAME_OVER = 'GAME_OVER';

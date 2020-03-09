@@ -2,6 +2,7 @@ import { socket } from '../../utils/socketUtil';
 import { viewConnectedUsers } from '../actions/usersActions';
 import { setCurrentUser } from '../actions/authActions';
 import { showScore } from '../actions/playerActions';
+import { updateScoreBoard } from '../actions/questionActions';
 
 const socketMiddleware = ({ dispatch }) => next => action => {
 	if (action.type === 'JOIN') {
@@ -20,9 +21,9 @@ const socketMiddleware = ({ dispatch }) => next => action => {
 	}
 
 	if (action.type === 'DONE') {
-		// dispatch({type: 'GAME_OVER'})
-		socket.emit('done', action.payload);
+		socket.emit('done', action.payload[0]);
 		socket.on('show_score', scores => {
+			dispatch(updateScoreBoard());
 			dispatch(showScore(scores));
 		});
 	}

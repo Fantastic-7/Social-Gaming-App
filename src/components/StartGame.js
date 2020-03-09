@@ -91,16 +91,18 @@ class StartGame extends Component {
 						<h1 className="welcome">
 							Welcome !!!<p> Please wait for other {5 - users.length} users to join the game</p>
 						</h1>
-						<button onClick={this.setQuestions} className="startButton">
+						{/* <button onClick={this.setQuestions} className="startButton">
 							Start
-						</button>
+						</button> */}
 					</>
 				) : (
 					<>
 						<h1 className="welcome">
 							Welcome !!!<p> Click the start button to start playing</p>
 						</h1>
-						<div>c</div>
+						<button onClick={this.setQuestions} className="startButton">
+							Start
+						</button>
 					</>
 				)}
 			</div>

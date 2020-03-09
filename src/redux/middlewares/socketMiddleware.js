@@ -1,6 +1,7 @@
 import { socket } from '../../utils/socketUtil';
 import { viewConnectedUsers } from '../actions/usersActions';
 import { setCurrentUser } from '../actions/authActions';
+import { showScore } from '../actions/playerActions';
 
 const socketMiddleware = ({ dispatch }) => next => action => {
 	if (action.type === 'JOIN') {
@@ -15,6 +16,15 @@ const socketMiddleware = ({ dispatch }) => next => action => {
 		socket.emit('leave_game', action.payload);
 		socket.on('joined_users', users => {
 			dispatch(viewConnectedUsers(users));
+		});
+	}
+
+	if (action.type === 'DONE') {
+		// dispatch({type: 'GAME_OVER'})
+		socket.emit('done', action.payload);
+		socket.on('show_score', scores => {
+			console.log(scores);
+			dispatch(showScore(scores));
 		});
 	}
 

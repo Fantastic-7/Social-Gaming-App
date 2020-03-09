@@ -14,3 +14,5 @@ export const UPDATE_SCORE = 'UPDATE_SCORE';
 export const RESTART_GAME = 'RESTART_GAME';
 export const RESET_QUESTION = 'RESET_QUESTION';
 export const LOAD_CONNECTED_USERS = 'LOAD_CONNECTED_USERS';
+export const DONE = 'DONE';
+export const SHOW_SCORE = 'SHOW_SCORE';

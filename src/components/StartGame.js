@@ -50,7 +50,10 @@ class StartGame extends Component {
 			store.remove('questions', random);
 			store.set('setQuestions', true);
 			store.set('questions', random);
-			await this.props.createPlayer();
+			await this.props.createPlayer({
+				id: this.props.user.id,
+				name: this.props.user.username,
+			});
 			console.log(this.props.players);
 
 			this.setState(prevState => ({
@@ -80,16 +83,26 @@ class StartGame extends Component {
 	};
 
 	render() {
+		const { users } = this.props;
 		return !this.state.started ? (
 			<div className="startDiv">
-				<h1 className="welcome">
-					Welcome !!!<p> Click the start button to start playing</p>
-				</h1>
-				<div>
-					<button onClick={this.setQuestions} className="startButton">
-						Start
-					</button>
-				</div>
+				{users.length < 5 ? (
+					<>
+						<h1 className="welcome">
+							Welcome !!!<p> Please wait for other {5 - users.length} users to join the game</p>
+						</h1>
+						{/* <button onClick={this.setQuestions} className="startButton">
+							Start
+						</button> */}
+					</>
+				) : (
+					<>
+						<h1 className="welcome">
+							Welcome !!!<p> Click the start button to start playing</p>
+						</h1>
+						<div>c</div>
+					</>
+				)}
 			</div>
 		) : (
 			<div className="container">
@@ -108,12 +121,14 @@ class StartGame extends Component {
 	}
 }
 
-const mapStateToProps = state => ({
-	players: state.player,
-	questions: state.question,
+const mapStateToProps = ({ player, question, usersReducer, auth }) => ({
+	players: player,
+	questions: question,
+	users: usersReducer.users,
+	user: auth.user,
 });
 const mapDispatchToProps = dispatch => ({
-	createPlayer: data => dispatch(createNewPlayer({ id: '56477', name: 'boris' })),
+	createPlayer: data => dispatch(createNewPlayer(data)),
 	restartGame: () => dispatch(restartGame()),
 });
 

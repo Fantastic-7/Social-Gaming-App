@@ -117,6 +117,11 @@ class Question extends Component {
 								<ScoreBoard />
 							)}
 							{/* options.map(i => this.RenderlistView(i))} */}
+							{/* {!this.state.scoreBoard
+								? options.map(i => this.RenderlistView(i))
+								: players.map((i, score) => this.RenderScoreBoard(score))} */
+                options.map(i => this.RenderlistView(i))
+              }
 						</div>
 					}
 				</center>

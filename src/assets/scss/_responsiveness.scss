@@ -1,0 +1,115 @@
+@import './variables.scss';
+
+// responsive variables
+$phone-size: 600px;
+$tablet-portrait-size: 6000px;
+$tablet-landscape-size: 768px;
+$laptop-size: 992px;
+$large-screen-size: 1200px;
+
+
+@mixin response($media) {
+  @if $media == phones {
+    @media only screen and (min-width: $phone-size) { @content; }
+  }
+  @if $media == tablets {
+    @media only screen and (max-width: $tablet-portrait-size) and (min-width: $tablet-landscape-size) { @content; }
+  }
+  @else if $media == laptops {
+    @media only screen and (min-width: $tablet-laptop-size) { @content; }
+  }
+  @else if $media == wide-screens {
+    @media only screen and (min-width: $large-screen-size) { @content; }
+  }
+}
+
+.wrapper {
+    @include response(phones) { width: 100% ;}
+    @include response(laptops) { width: 100%; }
+    @include response(wide-screens) { float: none; }
+  }
+
+  .navBar {
+    @include response(phones) { width: 100% ;}
+    @include response(laptops) { 
+        width: 100%;
+
+     }
+    @include response(wide-screens) { float: none; } 
+  }
+  .logo { 
+    @include response(phones) { 
+        left: 33px;
+        top: 3px;
+    }
+    @include response(laptops) {
+        left: 43px;
+        top: 3px;
+         }
+    @include response(wide-screens) { float: none; }
+  }
+.navProfile {
+    @include response(phones) { 
+        left: 400px;
+        top: 7px;
+    }
+    @include response(laptops) {
+        left: 750px;
+        top: 7px;
+         }
+    @include response(wide-screens) { float: none; }
+  }
+  .signout { 
+    @include response(phones) { 
+        left: 470px;
+    }
+    @include response(laptops) { 
+        left: 830px;
+     }
+    @include response(wide-screens) { float: none; }  
+  }
+  .startDiv {
+    @include response(phones) { 
+        top: 740px ;
+        width: 480px !important;
+    }
+    @include response(laptops) { width: 100%px; }
+    @include response(wide-screens) { float: none; } 
+  }
+  .sidebar {
+    @include response(phones) { 
+        display: block;
+        left: 30px;
+        top: 740px ;
+        width: 500px !important;
+    }
+    @include response(laptops) { 
+        width: 30%;
+        left: 660px;
+     }
+    @include response(wide-screens) { float: none; } 
+  }
+  .welcome {
+    @include response(phones) { 
+        width: 500px !important;
+        
+    }
+    @include response(laptops) { 
+        width: 100%px;
+        font-size: 22px;
+        left: 45px;
+     }
+    @include response(wide-screens) { float: none; } 
+  }
+  .container {
+    @include response(phones) { 
+        width: 700px !important;
+        
+    }
+    @include response(laptops) { 
+        width: 100%px;
+        font-size: 22px;
+        left: 45px;
+     }
+    @include response(wide-screens) { float: none; } 
+  }

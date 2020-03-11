@@ -96,7 +96,6 @@ class Question extends Component {
 		const { players } = this.props;
 		const { count } = this.state;
 		console.log(players);
-
 		return (
 			<div>
 				<center>

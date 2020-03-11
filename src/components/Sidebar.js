@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadConnectedUsers } from '../redux/actions/usersActions';
 import '../assets/scss/sidebar.scss';
 
 class Sidebar extends Component {
@@ -31,13 +30,4 @@ class Sidebar extends Component {
 
 const mapStateToProps = ({ usersReducer }) => ({ users: usersReducer.users });
 
-const mapDispatchToProps = dispatch => ({
-	// connectedUsers() {
-	// 	dispatch(viewConnectedUsers());
-	// },
-	connectedUsers() {
-		dispatch(loadConnectedUsers());
-	},
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+export default connect(mapStateToProps)(Sidebar);

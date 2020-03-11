@@ -100,7 +100,9 @@ class StartGame extends Component {
 						<h1 className="welcome">
 							Welcome !!!<p> Click the start button to start playing</p>
 						</h1>
-						<div>c</div>
+						<button onClick={this.setQuestions} className="startButton">
+							Start
+						</button>
 					</>
 				)}
 			</div>

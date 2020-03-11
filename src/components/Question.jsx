@@ -5,8 +5,8 @@ import { loadQuestion, nextQuestion } from '../redux/actions/questionActions';
 import { updateScore, restartGame, gameOver } from '../redux/actions/playerActions';
 import { questions } from '../redux/actions/questionActions';
 import { GameQuestions, users } from '../data/data';
-// import  { GameQuestions, users }   from './data/QuestionAndAnswers';
 import store from 'store';
+import ScoreBoard from './ScoreBoard';
 
 class Question extends Component {
 	constructor(props) {
@@ -91,16 +91,11 @@ class Question extends Component {
 		);
 	}
 
-	RenderScoreBoard(i, score) {
-		return <div className="score" key={i}>{score}</div>;
-	}
-
 	render() {
 		const { question, options, currentQuestion } = this.props.questions;
 		const { players } = this.props;
-    const { count } = this.state;
-    console.log(players);
-    
+		const { count } = this.state;
+		console.log(players);
 		return (
 			<div>
 				<center>
@@ -116,11 +111,12 @@ class Question extends Component {
 							<div className="score">
 								Score: {this.props.players[0].score} out of {this.props.players[0].questionCount}
 							</div>
-							{/* {!this.state.scoreBoard
-								? options.map(i => this.RenderlistView(i))
-								: players.map((i, score) => this.RenderScoreBoard(score))} */
-                options.map(i => this.RenderlistView(i))
-              }
+							{!this.props.questions.scoreBoard ? (
+								options.map(i => this.RenderlistView(i))
+							) : (
+								<ScoreBoard />
+							)}
+							{/* options.map(i => this.RenderlistView(i))} */}
 						</div>
 					}
 				</center>

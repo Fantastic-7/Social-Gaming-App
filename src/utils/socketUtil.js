@@ -4,5 +4,8 @@ const socket = io('https://brainygame.herokuapp.com', { transports: ['websocket'
 socket.on('connect', () => {
 	console.log('Socket connected');
 });
+socket.on('show_score', scores => {
+	console.log('Other players\' score', scores);
+});
 
 export { socket };

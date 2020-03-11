@@ -1,4 +1,4 @@
-import { LOAD_QUESTION, NEXT_QUESTION, RESET_QUESTION } from '../../constants/actionTypes';
+import { LOAD_QUESTION, NEXT_QUESTION, RESET_QUESTION, GAME_OVER } from '../../constants/actionTypes';
 
 const initialState = {
 	gameAnswer: null,
@@ -6,6 +6,7 @@ const initialState = {
 	count: 10,
 	options: [],
 	done: false,
+  scoreBoard: false,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -27,10 +28,11 @@ export default (state = initialState, { type, payload }) => {
 			return {
 				...initialState,
 			};
-		case 'GAME_OVER':
+		case GAME_OVER:
 			return {
         ...state,
-        done: true
+        done: true,
+        scoreBoard: true,
 			};
 		default:
 			return state;
